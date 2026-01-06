@@ -1,0 +1,5 @@
+#Python env
+Install a venv : py - m venv venv
+Activate : .\venv\Scripts\Activate.ps1   
+
+Install keyboard : pip install keyboard
