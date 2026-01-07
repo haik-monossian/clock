@@ -1,5 +1,119 @@
-#Python env
-Install a venv : py - m venv venv
-Activate : .\venv\Scripts\Activate.ps1   
 
-Install keyboard : pip install keyboard
+🕒 Overview
+
+This project is a clock and time-management application written in Python.
+It allows the user to:
+
+    afficher l’heure système en temps réel
+    définir une heure personnalisée qui s’incrémente comme une horloge
+    changer le format horaire (24h / 12h AM-PM)
+    configurer une alarme
+    utiliser un menu interactif
+
+📂 Project Structure
+
+project/
+│
+├── main.py
+├── alarm.py
+├── printTime.py
+└── changeformat.py
+
+▶️ How to Run
+
+Simply run :
+
+python main.py
+
+Make sure the file alarm.mp3 is in the same folder for the alarm sound.
+📌 Features
+1) Main Menu (main.py)
+
+The menu displayed is:
+
+===== MENU =====
+1. Show Clock
+2. Set time
+3. Alarm
+4. Stop time
+5. AM / PM
+6. Quit
+
+Only options 1, 2, 3, 5 are functional.
+2) 🕰 Show System Time (printTime.py)
+
+Function: print_time()
+
+    Affiche l’heure système en direct
+    Actualisation chaque seconde
+    Retour à la ligne grâce à \r
+    Stop : appuyer sur A
+
+Current time: 14:32:05
+
+3) ⏱ Manual Time (printTime.py)
+imput_time()
+
+    Saisie d’un horaire validé (0–23 / 0–59 / 0–59)
+
+set_time()
+
+    Démarre une horloge personnalisée à partir d’une heure choisie
+    Incrémentation correcte (h, m, s)
+    Stop : A
+
+Exemple affichage :
+
+Elapsed time: 08:12:53
+
+4) ⏰ Alarm System (alarm.py)
+alarm()
+
+    Demande heure et minute
+    Vérifie les valeurs
+    Lance un thread daemon pour surveiller l’heure
+    Affiche : “Alarm activated…”
+
+show_alarm()
+
+    Vérifie l’heure toutes les secondes
+    Quand l’heure correspond → affiche :
+
+IT'S TIME !
+ALARM - Is : 07 : 30
+======================
+
+    Joue alarm.mp3 dans un thread séparé
+
+5) 🌓 AM / PM Format (changeformat.py)
+
+Function: change_format()
+
+    Affiche l’heure au format 24h ou 12h
+    Appuyer sur 1 pour basculer
+    Appuyer sur ESC pour quitter
+
+Exemple :
+
+14:08:12 To change mode press '1', 'esc' to exit
+2:08:12 PM : To change mode press '1', 'esc' to exit
+
+🛠 Requirements
+
+Install modules if needed:
+
+pip install playsound
+pip install keyboard
+
+📄 Notes
+
+    Le programme utilise des threads pour l’alarme afin de ne pas bloquer le menu.
+    Le module keyboard nécessite parfois un lancement en mode administrateur sous Windows.
+    Le fichier alarm.mp3 doit exister.
+
+🎯 Possible Improvements
+
+    créer une interface graphique (Tkinter)
+    ajouter plusieurs alarmes
+    stopper l’alarme avec une touche
+    améliorer le menu principal
