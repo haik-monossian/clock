@@ -4,7 +4,7 @@ import keyboard
 import time
 import pyttsx3
 
---- Start voice ---
+#--- Start voice ---
 engine = pyttsx3.init()
 
 #------ functions ------
@@ -44,7 +44,7 @@ def print_time():
         print(f"Current time: {hours.strftime('%H:%M:%S')}   ", end="\r")
         
         # Voice pyttsx3
-        engine.say((f"Il est : {hours.strftime('%H:%M:%S')}")
+        engine.say(f"Il est : {hours.strftime('%H:%M:%S')}")
         
         time.sleep(1) # Pause for 1 second to match real-time
         
