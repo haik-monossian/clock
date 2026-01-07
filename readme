@@ -110,10 +110,3 @@ pip install keyboard
     Le programme utilise des threads pour l’alarme afin de ne pas bloquer le menu.
     Le module keyboard nécessite parfois un lancement en mode administrateur sous Windows.
     Le fichier alarm.mp3 doit exister.
-
-🎯 Possible Improvements
-
-    créer une interface graphique (Tkinter)
-    ajouter plusieurs alarmes
-    stopper l’alarme avec une touche
-    améliorer le menu principal
