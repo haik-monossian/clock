@@ -1,26 +1,32 @@
 import time
 import keyboard
 
-def change_format(): # Change the format 24 into 12 AM PM
-    mode = True # initialise mode 24 / 12
-    while True: 
-        realtime = time.strftime("%H:%M:%S", time.localtime(time.time())) 
-        if mode: # Mode 24 H 
-            print(realtime, "To change mode press '1', 'esc' to exit")
-            time.sleep(1)
+def change_format():
+    mode = True
+    try:
+        while True:
+            now_tuple = time.localtime()
+            hours, mins, secs = now_tuple.tm_hour, now_tuple.tm_min, now_tuple.tm_sec
+            realtime = f"{hours:02}:{mins:02}:{secs:02}"
 
-        elif not mode: # Mode 12 AM PM 
-            if int(realtime[:2]) < 12: # if the hours are < 12 
-                print (realtime, " AM","To change mode press '1', 'esc' to exit")
-            else :
-                new_realtime = str(int (realtime[:2]) - 12) + realtime[2:]
-                print ( new_realtime, "PM", ": To change mode press '1', 'esc' to exit")
-            time.sleep(1)
+            if mode:
+                print(realtime, "Pour changer de mode presse '1', 'esc' pour quitter")
+                time.sleep(1)
+            elif not mode:
+                if hours < 12:
+                    print(realtime, "AM", "Pour changer de mode presse '1', 'esc' pour quitter")
+                else:
+                    hours_pm = hours - 12 if hours > 12 else 12
+                    new_realtime = f"{hours_pm:02}:{mins:02}:{secs:02}"
+                    print(new_realtime, "PM", ": Pour changer de mode presse '1', 'esc' pour quitter")
+                time.sleep(1)
 
-        if keyboard.is_pressed('1'): # Press 1 to switch mode 24 / 12
-            if mode :
-                mode = False
-            else : 
-                mode = True
-        if keyboard.is_pressed('esc'):
-            return
+            if keyboard.is_pressed('1'):
+                mode = not mode
+            if keyboard.is_pressed('esc'):
+                return
+            
+            pass
+
+    except KeyboardInterrupt:
+        print("\nArrêt du programme avec Ctrl+C !")
