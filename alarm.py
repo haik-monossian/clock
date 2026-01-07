@@ -10,7 +10,7 @@ def alarm():
     while True:
         try : 
             alarm_hour = int(input("Enter an hour 0/23 : "))
-            alarm_min = int(input("Enter a minute  0/60 : "))
+            alarm_min = int(input("Enter a minute  0/59 : "))
             alarm_second = int(input("Enter a second  0/59 : "))
             if 0 <= alarm_hour <= 23 and 0 <= alarm_min <= 59 and 0<= alarm_second <= 59:
                 break
@@ -23,7 +23,7 @@ def alarm():
     alarm_time = (alarm_hour, alarm_min, alarm_second)
 
     #Threading Alarm
-    alarm_threading = threading.Thread(target=show_alarm, args=((alarm_hour, alarm_min, alarm_second),), daemon=True)
+    alarm_threading = threading.Thread(target=show_alarm, args=((alarm_time),), daemon=True)
     alarm_threading.start()
     print("Alarm activated...")
 
@@ -40,3 +40,4 @@ def show_alarm(alarm_tuple):
             threading.Thread(target=playsound, args=("alarm.mp3",), daemon=True).start()
             break
         time.sleep(1) #Check 1 second
+alarm()
