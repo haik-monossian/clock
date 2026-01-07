@@ -2,6 +2,10 @@
 import datetime
 import keyboard
 import time
+import pyttsx3
+
+--- Start voice ---
+engine = pyttsx3.init()
 
 #------ functions ------
 
@@ -39,6 +43,9 @@ def print_time():
         # end="\r" returns the cursor to the start of the line instead of a new line
         print(f"Current time: {hours.strftime('%H:%M:%S')}   ", end="\r")
         
+        # Voice pyttsx3
+        engine.say((f"Il est : {hours.strftime('%H:%M:%S')}")
+        
         time.sleep(1) # Pause for 1 second to match real-time
         
         if keyboard.is_pressed('a'):
@@ -60,7 +67,7 @@ def set_time(time_tuple):
         h, m, s = time_tuple
         
         # :02 ensures the number is displayed with at least 2 digits 
-        print(f"{h:02}:{m:02}:{s:02}   ", end="\r")
+        print(f"Elapsed time: {h:02}:{m:02}:{s:02}   ", end="\r")
         
         # Check for exit condition before processing calculation
         if keyboard.is_pressed('a'):
@@ -96,4 +103,6 @@ def choice():
     else:
         print_time()
 
+# --- End Voice ---
+engine.runAndWait()
 
