@@ -1,14 +1,13 @@
-
 🕒 Overview
 
-This project is a clock and time-management application written in Python.
+This project is a clock and time‑management application written in Python.
 It allows the user to:
 
-    afficher l’heure système en temps réel
-    définir une heure personnalisée qui s’incrémente comme une horloge
-    changer le format horaire (24h / 12h AM-PM)
-    configurer une alarme
-    utiliser un menu interactif
+    display the system time in real time
+    set a custom time that increments like a real clock
+    switch between 24‑hour and 12‑hour AM/PM format
+    configure an alarm
+    use an interactive menu
 
 📂 Project Structure
 
@@ -21,7 +20,7 @@ project/
 
 ▶️ How to Run
 
-Simply run :
+Run the program with:
 
 python main.py
 
@@ -29,7 +28,7 @@ Make sure the file alarm.mp3 is in the same folder for the alarm sound.
 📌 Features
 1) Main Menu (main.py)
 
-The menu displayed is:
+Displayed menu:
 
 ===== MENU =====
 1. Show Clock
@@ -39,74 +38,76 @@ The menu displayed is:
 5. AM / PM
 6. Quit
 
-Only options 1, 2, 3, 5 are functional.
+Only options 1, 2, 3, and 5 are functional.
 2) 🕰 Show System Time (printTime.py)
 
 Function: print_time()
 
-    Affiche l’heure système en direct
-    Actualisation chaque seconde
-    Retour à la ligne grâce à \r
-    Stop : appuyer sur A
+    Displays the system time live
+    Updates every second
+    Uses \r to refresh on the same line
+    Stop by pressing A
+
+Example:
 
 Current time: 14:32:05
 
 3) ⏱ Manual Time (printTime.py)
 imput_time()
 
-    Saisie d’un horaire validé (0–23 / 0–59 / 0–59)
+    Prompts the user to enter a valid hour, minute, and second (0–23 / 0–59 / 0–59)
 
 set_time()
 
-    Démarre une horloge personnalisée à partir d’une heure choisie
-    Incrémentation correcte (h, m, s)
-    Stop : A
+    Starts a custom clock from the chosen time
+    Correct increments of hours, minutes, and seconds
+    Stop by pressing A
 
-Exemple affichage :
+Example:
 
 Elapsed time: 08:12:53
 
 4) ⏰ Alarm System (alarm.py)
 alarm()
 
-    Demande heure et minute
-    Vérifie les valeurs
-    Lance un thread daemon pour surveiller l’heure
-    Affiche : “Alarm activated…”
+    Asks for hour and minute
+    Validates input
+    Starts a daemon thread to monitor the time
+    Prints: Alarm activated…
 
 show_alarm()
 
-    Vérifie l’heure toutes les secondes
-    Quand l’heure correspond → affiche :
+    Checks the current time every second
+    When the set time matches, displays:
 
 IT'S TIME !
 ALARM - Is : 07 : 30
 ======================
 
-    Joue alarm.mp3 dans un thread séparé
+    Plays alarm.mp3 in a separate thread
 
 5) 🌓 AM / PM Format (changeformat.py)
 
 Function: change_format()
 
-    Affiche l’heure au format 24h ou 12h
-    Appuyer sur 1 pour basculer
-    Appuyer sur ESC pour quitter
+    Displays time in either 24‑hour or 12‑hour format
+    Press 1 to switch mode
+    Press ESC to exit
 
-Exemple :
+Example:
 
 14:08:12 To change mode press '1', 'esc' to exit
 2:08:12 PM : To change mode press '1', 'esc' to exit
 
 🛠 Requirements
 
-Install modules if needed:
+Install required modules:
 
 pip install playsound
 pip install keyboard
 
 📄 Notes
 
-    Le programme utilise des threads pour l’alarme afin de ne pas bloquer le menu.
-    Le module keyboard nécessite parfois un lancement en mode administrateur sous Windows.
-    Le fichier alarm.mp3 doit exister.
+    The program uses threads so the alarm does not block the menu.
+    The keyboard module may require administrator privileges on Windows.
+    The file alarm.mp3 must be present in the project folder.
