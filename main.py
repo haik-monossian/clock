@@ -1,7 +1,7 @@
-from printime import print_time, set_time, imput_time
-from alarm import alarm
-from stop_time import stop_time
-from change_format import change_format
+from modules.time import print_time, set_time, imput_time
+from modules.alarm import alarm
+from modules.stop_time import stop_time
+from modules.change_format import change_format
 
 def menu():
     while True:
