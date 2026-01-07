@@ -10,15 +10,15 @@ def change_format():
             realtime = f"{hours:02}:{mins:02}:{secs:02}"
 
             if mode:
-                print(realtime, "Pour changer de mode presse '1', 'esc' pour quitter")
+                print(realtime, "Pour changer de mode presse '1', 'esc' pour quitter", end="\r")
                 time.sleep(1)
             elif not mode:
                 if hours < 12:
-                    print(realtime, "AM", "Pour changer de mode presse '1', 'esc' pour quitter")
+                    print(realtime, "AM", "Pour changer de mode presse '1', 'esc' pour quitter", end="\r")
                 else:
                     hours_pm = hours - 12 if hours > 12 else 12
                     new_realtime = f"{hours_pm:02}:{mins:02}:{secs:02}"
-                    print(new_realtime, "PM", ": Pour changer de mode presse '1', 'esc' pour quitter")
+                    print(new_realtime, "PM", ": Pour changer de mode presse '1', 'esc' pour quitter", end="\r")
                 time.sleep(1)
 
             if keyboard.is_pressed('1'):
