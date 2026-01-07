@@ -2,6 +2,10 @@
 import datetime
 import keyboard
 import time
+import pyttsx3
+
+--- Start voice ---
+engine = pyttsx3.init()
 
 #------ functions ------
 
@@ -38,6 +42,9 @@ def print_time():
         # %H:%M:%S formats the time string 
         # end="\r" returns the cursor to the start of the line instead of a new line
         print(f"Current time: {hours.strftime('%H:%M:%S')}   ", end="\r")
+        
+        # Voice pyttsx3
+        engine.say((f"Il est : {hours.strftime('%H:%M:%S')}")
         
         time.sleep(1) # Pause for 1 second to match real-time
         
@@ -96,5 +103,9 @@ def choice():
     else:
         print_time()
 
+# --- End Voice ---
+engine.runAndWait()
+
 #------ main ------
+
 choice()
