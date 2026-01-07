@@ -60,7 +60,7 @@ def set_time(time_tuple):
         h, m, s = time_tuple
         
         # :02 ensures the number is displayed with at least 2 digits 
-        print(f"Elapsed time: {h:02}:{m:02}:{s:02}   ", end="\r")
+        print(f"{h:02}:{m:02}:{s:02}   ", end="\r")
         
         # Check for exit condition before processing calculation
         if keyboard.is_pressed('a'):
@@ -96,5 +96,4 @@ def choice():
     else:
         print_time()
 
-#------ main ------
-choice()
+
