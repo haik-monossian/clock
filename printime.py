@@ -4,8 +4,7 @@ import keyboard
 import time
 import pyttsx3
 
---- Start voice ---
-engine = pyttsx3.init()
+
 
 #------ functions ------
 
@@ -28,6 +27,10 @@ def imput_time():
                 return (h, m, s) # Return the tuple if valid
             
             print("Error: Please enter a valid time range.")
+
+        except KeyboardInterrupt:
+            print("\n \nBack to the menuuuuu.\n")
+            break
         except ValueError:
             print("Error: Please enter numbers only.")
 
@@ -37,14 +40,19 @@ def print_time():
     Runs in an infinite loop until the user presses 'A'.
     """
     print("System Clock started. Press 'A' to stop.")
+    count = 0
     while True:
         hours = datetime.datetime.now()
         # %H:%M:%S formats the time string 
         # end="\r" returns the cursor to the start of the line instead of a new line
+
+        engine = pyttsx3.init()
+        engine.say(f"il est  : {hours.strftime('%H:%M:%S')}")
         print(f"Current time: {hours.strftime('%H:%M:%S')}   ", end="\r")
+        engine.runAndWait()
+        engine.stop()
         
-        # Voice pyttsx3
-        engine.say((f"Il est : {hours.strftime('%H:%M:%S')}")
+        
         
         time.sleep(1) # Pause for 1 second to match real-time
         
@@ -103,9 +111,3 @@ def choice():
     else:
         print_time()
 
-# --- End Voice ---
-engine.runAndWait()
-
-#------ main ------
-
-choice()
