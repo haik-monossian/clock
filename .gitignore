@@ -6,4 +6,6 @@ __pycache__/
 venv/
 env/
 .env
-app
+
+# Ignorer les logs erreurs
+error.log
