@@ -1,0 +1,113 @@
+🕒 Overview
+
+This project is a clock and time‑management application written in Python.
+It allows the user to:
+
+    display the system time in real time
+    set a custom time that increments like a real clock
+    switch between 24‑hour and 12‑hour AM/PM format
+    configure an alarm
+    use an interactive menu
+
+📂 Project Structure
+
+project/
+│
+├── main.py
+├── alarm.py
+├── printTime.py
+└── changeformat.py
+
+▶️ How to Run
+
+Run the program with:
+
+python main.py
+
+Make sure the file alarm.mp3 is in the same folder for the alarm sound.
+📌 Features
+1) Main Menu (main.py)
+
+Displayed menu:
+
+===== MENU =====
+1. Show Clock
+2. Set time
+3. Alarm
+4. Stop time
+5. AM / PM
+6. Quit
+
+Only options 1, 2, 3, and 5 are functional.
+2) 🕰 Show System Time (printTime.py)
+
+Function: print_time()
+
+    Displays the system time live
+    Updates every second
+    Uses \r to refresh on the same line
+    Stop by pressing A
+
+Example:
+
+Current time: 14:32:05
+
+3) ⏱ Manual Time (printTime.py)
+imput_time()
+
+    Prompts the user to enter a valid hour, minute, and second (0–23 / 0–59 / 0–59)
+
+set_time()
+
+    Starts a custom clock from the chosen time
+    Correct increments of hours, minutes, and seconds
+    Stop by pressing A
+
+Example:
+
+Elapsed time: 08:12:53
+
+4) ⏰ Alarm System (alarm.py)
+alarm()
+
+    Asks for hour and minute
+    Validates input
+    Starts a daemon thread to monitor the time
+    Prints: Alarm activated…
+
+show_alarm()
+
+    Checks the current time every second
+    When the set time matches, displays:
+
+IT'S TIME !
+ALARM - Is : 07 : 30
+======================
+
+    Plays alarm.mp3 in a separate thread
+
+5) 🌓 AM / PM Format (changeformat.py)
+
+Function: change_format()
+
+    Displays time in either 24‑hour or 12‑hour format
+    Press 1 to switch mode
+    Press ESC to exit
+
+Example:
+
+14:08:12 To change mode press '1', 'esc' to exit
+2:08:12 PM : To change mode press '1', 'esc' to exit
+
+🛠 Requirements
+
+Install required modules:
+
+pip install playsound
+pip install keyboard
+
+📄 Notes
+
+    The program uses threads so the alarm does not block the menu.
+    The keyboard module may require administrator privileges on Windows.
+    The file alarm.mp3 must be present in the project folder.

@@ -2,10 +2,14 @@ import datetime
 import threading
 from playsound import playsound
 import time
+import logging
+
+
 
 def alarm():
     """Alarm Function"""
     print("~~~ ALARM CONFIGURATION ~~~")
+    print("\x1B[3mCtrl+c for quit\x1B[0m")
     #Loop Alarm Choice
     while True:
         try : 
@@ -16,8 +20,13 @@ def alarm():
                 break
             else:
                 print("Hour must be 0-23, minute and secondmust be 0-59")
-        except:
-            print("Please enter only number")
+        except KeyboardInterrupt:
+            print("\n\nExiting alarm setup...")
+            return
+        except ValueError as e:
+            logging.error(f"Alarm - ValueError: {e}")
+            print("\nPlease enter only number")
+            
 
     #Tuple Alarm Time
     alarm_time = (alarm_hour, alarm_min, alarm_second)
@@ -33,11 +42,10 @@ def show_alarm(alarm_tuple):
     while True:
         now = datetime.datetime.now()
         if (now.hour == alarm_hour and now.minute == alarm_min and now.second == alarm_second):
-            print("")
+            print("\n \n")
             print("IT'S TIME !")
             print(f"ALARM - Is : {alarm_hour} : {alarm_min} : {alarm_second}")
             print("======================")
             threading.Thread(target=playsound, args=("alarm.mp3",), daemon=True).start()
             break
         time.sleep(1) #Check 1 second
-
