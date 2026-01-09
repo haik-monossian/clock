@@ -40,4 +40,4 @@ def show_alarm(alarm_tuple):
             threading.Thread(target=playsound, args=("alarm.mp3",), daemon=True).start()
             break
         time.sleep(1) #Check 1 second
-alarm()
+
