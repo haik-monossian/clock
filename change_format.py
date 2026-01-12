@@ -1,18 +1,18 @@
 import time
 import keyboard
 
-def change_format():
+def change_format(): #Change HOURS to AM/PM Mode
     mode = True
     try:
         while True:
-            now_tuple = time.localtime()
+            now_tuple = time.localtime() #Def Actual time 
             hours, mins, secs = now_tuple.tm_hour, now_tuple.tm_min, now_tuple.tm_sec
             realtime = f"{hours:02}:{mins:02}:{secs:02}"
 
             if mode:
-                print(realtime, "Pour changer de mode presse '1', 'esc' pour quitter", end="\r")
+                print(realtime, "Pour changer de mode presse '1', 'esc' pour quitter", end="\r") # Print time every seconds
                 time.sleep(1)
-            elif not mode:
+            elif not mode: # Print time in AM/PM MODE
                 if hours < 12:
                     print(realtime, "AM", "Pour changer de mode presse '1', 'esc' pour quitter", end="\r")
                 else:
@@ -21,9 +21,9 @@ def change_format():
                     print(new_realtime, "PM", ": Pour changer de mode presse '1', 'esc' pour quitter", end="\r")
                 time.sleep(1)
 
-            if keyboard.is_pressed('1'):
+            if keyboard.is_pressed('1'): # Change mode
                 mode = not mode
-            if keyboard.is_pressed('esc'):
+            if keyboard.is_pressed('esc'): # Quit
                 return
             
             pass
